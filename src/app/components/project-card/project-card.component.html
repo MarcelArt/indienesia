@@ -1,0 +1,11 @@
+<mat-card class="project-card">
+  <a [routerLink]="['/app']">
+    <img class="screenshot" mat-card-image src="http://localhost:3000/screenshot/{{ thumbnail_id }}">
+  </a>
+  <mat-card-content>
+    <a class="my-link" [routerLink]="['/app', project_id]">
+      {{ title }}
+    </a>
+    <mat-card-subtitle>{{ description }}</mat-card-subtitle>
+  </mat-card-content>
+</mat-card>

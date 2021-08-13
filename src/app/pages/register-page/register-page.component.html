@@ -1,0 +1,38 @@
+<div class="my-container">
+  <h1 class="my-text">Create an account</h1>
+
+  <div class="form-section">
+    <p>
+      <mat-form-field class="custom-textbox">
+        <mat-label>Username</mat-label>
+        <input matInput class="my-text" [(ngModel)]="name">
+        <mat-hint>Required</mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="custom-textbox">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" class="my-text" [(ngModel)]="password">
+        <mat-hint>Required</mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="custom-textbox">
+        <mat-label>Repeat password</mat-label>
+        <input matInput type="password" class="my-text" [(ngModel)]="rePassword">
+        <mat-hint>Required</mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="custom-textbox">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" class="my-text" [(ngModel)]="email">
+        <mat-hint>Required</mat-hint>
+      </mat-form-field>
+    </p>
+    
+    <p class="my-text">
+      <button mat-raised-button (click)="register()">Create account</button> or already have an account? <a [routerLink]="['/login']" class="my-link">Login</a>
+    </p>
+  </div>
+</div>

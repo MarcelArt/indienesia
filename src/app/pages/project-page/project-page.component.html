@@ -1,0 +1,32 @@
+<div class="my-container">
+  <div class="my-content">
+    <div class="main-content">
+      <h1>{{ project.title }}</h1>
+      <div style="display: flex; flex-direction: row;">
+        <div>
+          <a class="my-link" [routerLink]="['/profile/', project.account_id]"><i>{{ project.name }}</i></a>
+          <p>
+            <mat-icon style="display:inline-flex; vertical-align: middle;">thumb_up</mat-icon> 100 <mat-icon style="display:inline-flex; vertical-align: middle;">thumb_down</mat-icon> 70
+          </p>
+        </div>
+        <span class="spacer"></span>
+        <button mat-raised-button (click)="downloadProject()">Download</button>
+      </div>
+      <br>
+      <p>
+        {{ project.description }}
+      </p>
+      <h2>Comments</h2>
+      <mat-form-field style="width: 100%; border-style: solid; border-color: #707070; border-width: thin; background-color: #fff;" appearance="fill">
+        <textarea matInput placeholder="Post a comment"></textarea>
+      </mat-form-field>
+      <button mat-raised-button>Comment</button>
+    </div>
+    <div class="side-content">
+      <img class="screenshot" *ngFor="let screenshot of screenshots" src="http://localhost:3000/screenshot/{{ screenshot.screenshot_id }}" alt="">
+      <!-- <img src="https://picsum.photos/300/200" alt="">
+      <img src="https://picsum.photos/300/200?grayscale" alt="">
+      <img src="https://picsum.photos/300/200?blur=2" alt=""> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+.my-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-section {
+  padding: 20px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #EEEBDD;
+  min-width: 550px;
+}
+
+.my-text {
+  color: #EEEBDD;
+}
+
+.my-link {
+  color: #FF3D3D;
+}
+
+mat-form-field.custom-textbox {
+  width: 100%;
+}

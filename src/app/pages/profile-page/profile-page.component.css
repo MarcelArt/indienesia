@@ -1,0 +1,39 @@
+.my-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+  height: fit-content;
+  flex-shrink: 0;
+}
+
+.my-content {
+  display: flex;
+  flex-direction: column;
+  width: 930px;
+  height: max-content;
+  min-height: 100%;
+  background-color: #EEEBDD;
+  padding: 35px;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.my-avatar {
+  border-radius: 60px;
+  width: 120px;
+  height: 120px;
+}
+
+.separator-line {
+  background-color: #707070;
+  color: #707070;
+  border-color: #707070;
+  border-style: solid;
+  border-width: 1px;
+}

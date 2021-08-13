@@ -1,0 +1,14 @@
+.project-card {
+  width: 200px;
+}
+
+.my-link {
+  color: #FF3D3D;
+}
+
+.screenshot {
+  max-width: 300px;
+  max-height: 200px;
+  /* display: block; */
+  object-fit: cover;
+}
