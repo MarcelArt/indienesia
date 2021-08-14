@@ -10,6 +10,8 @@ export class ProjectPageComponent implements OnInit {
   project: any;
   screenshots: any;
   projectUser: string;
+  comments: Array<object>;
+  myComment: string;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -28,6 +30,7 @@ export class ProjectPageComponent implements OnInit {
             this.screenshots = data.screenshots;
           })
       })
+    this.getComments();
   }
 
   downloadProject(): void {
@@ -40,5 +43,39 @@ export class ProjectPageComponent implements OnInit {
     //     'Content-Type': 'application/json',
     //   },
     // });
+  }
+
+  getComments(): void {
+    let project_id = this.route.snapshot.params.id;
+    fetch(`http://localhost:3000/comments/${project_id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.comments = data;
+      })
+  }
+
+  postComment(): void {
+    const account_id = JSON.parse(localStorage.getItem('loggedUser')).account_id;
+    const project_id = this.route.snapshot.params.id;
+    const reqBody = { account_id, project_id, body: this.myComment };
+    
+    fetch('http://localhost:3000/comment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reqBody)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      this.comments.push({ ...reqBody, name: JSON.parse(localStorage.getItem('loggedUser')).name });
+      this.myComment = '';
+    })
   }
 }

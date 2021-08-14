@@ -25,6 +25,8 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { CreateProjectComponent } from './pages/create-project/create-project.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { CommentBoxComponent } from './components/comment-box/comment-box.component';
+// import { CommentBoxComponent } from './components/components/comment-box/comment-box.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     RegisterPageComponent,
     ProjectPageComponent,
     CreateProjectComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    CommentBoxComponent,
+    // CommentBoxComponent
   ],
   imports: [
     BrowserModule,

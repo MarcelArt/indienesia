@@ -18,9 +18,11 @@
       </p>
       <h2>Comments</h2>
       <mat-form-field style="width: 100%; border-style: solid; border-color: #707070; border-width: thin; background-color: #fff;" appearance="fill">
-        <textarea matInput placeholder="Post a comment"></textarea>
+        <textarea matInput placeholder="Post a comment" [(ngModel)]="myComment"></textarea>
       </mat-form-field>
-      <button mat-raised-button>Comment</button>
+      <button mat-raised-button (click)="postComment()">Comment</button>
+      <p></p>
+      <app-comment-box *ngFor="let comment of comments"  [name]="comment.name" [body]="comment.body" [imgUrl]="'https://picsum.photos/30/30'"></app-comment-box>
     </div>
     <div class="side-content">
       <img class="screenshot" *ngFor="let screenshot of screenshots" src="http://localhost:3000/screenshot/{{ screenshot.screenshot_id }}" alt="">
