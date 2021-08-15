@@ -26,6 +26,9 @@ import { ProjectPageComponent } from './pages/project-page/project-page.componen
 import { CreateProjectComponent } from './pages/create-project/create-project.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { CommentBoxComponent } from './components/comment-box/comment-box.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { PageContainerComponent } from './components/page-container/page-container.component';
+import { DashboardProjectComponent } from './components/dashboard-project/dashboard-project.component';
 // import { CommentBoxComponent } from './components/components/comment-box/comment-box.component';
 
 @NgModule({
@@ -39,6 +42,9 @@ import { CommentBoxComponent } from './components/comment-box/comment-box.compon
     CreateProjectComponent,
     ProfilePageComponent,
     CommentBoxComponent,
+    DashboardPageComponent,
+    PageContainerComponent,
+    DashboardProjectComponent,
     // CommentBoxComponent
   ],
   imports: [

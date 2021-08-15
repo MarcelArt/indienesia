@@ -1,0 +1,16 @@
+.my-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.my-content {
+  display: flex;
+  flex-direction: column;
+  width: 930px;
+  height: 100%;
+  background-color: #EEEBDD;
+  padding: 35px;
+}

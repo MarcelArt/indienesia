@@ -1,0 +1,25 @@
+.my-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #1B1717;
+  color: #EEEBDD;
+  margin: 15px;
+}
+
+.my-body {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+}
+
+.screenshot {
+  width: 150px;
+  height: 100px;
+  /* display: block; */
+  object-fit: cover;
+}

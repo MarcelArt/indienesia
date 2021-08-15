@@ -1,0 +1,5 @@
+<app-page-container>
+  <h1>Dashboard</h1>
+  <app-dashboard-project *ngFor="let project of projects" [title]="project.title" [project_id]="project.project_id"></app-dashboard-project>
+  <!-- <app-dashboard-project></app-dashboard-project> -->
+</app-page-container>
