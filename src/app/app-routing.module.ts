@@ -5,6 +5,7 @@ import { CreateProjectComponent } from './pages/create-project/create-project.co
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ProfileEditPageComponent } from './pages/profile-edit-page/profile-edit-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'stats/:id',
     component: StatsPageComponent
+  },
+  {
+    path: 'settings/profile',
+    component: ProfileEditPageComponent
   }
 ];
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-page-container',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-container.component.css']
 })
 export class PageContainerComponent implements OnInit {
+  @Input() backgroundColor: string = '#EEEBDD';
+  @Input() color: string = '#080808';
 
   constructor() { }
 

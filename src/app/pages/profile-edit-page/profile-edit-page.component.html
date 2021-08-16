@@ -1,0 +1,31 @@
+<app-page-container backgroundColor="#212121" color="#fff">
+  <h1>Account Settings</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="name">
+  </mat-form-field>
+  <h3>Change Avatar</h3>
+  <div>
+    <img class="l-avatar" [src]="avatar">
+    <img class="m-avatar" [src]="avatar">
+    <img class="s-avatar" [src]="avatar">
+  </div>
+  <input type="file" (change)="onImageSelected($event)">
+  <p></p>
+  <h3>Change password</h3>
+  <div class="password-form">
+    <mat-form-field class="password-input" appearance="fill">
+      <mat-label>Old Password</mat-label>
+      <input matInput type="password" [(ngModel)]="oldPassword">
+    </mat-form-field>
+    <mat-form-field class="password-input" appearance="fill">
+      <mat-label>New Password</mat-label>
+      <input matInput type="password" [(ngModel)]="newPassword">
+    </mat-form-field>
+    <mat-form-field class="password-input" appearance="fill">
+      <mat-label>New Password Confirmation</mat-label>
+      <input matInput type="password" [(ngModel)]="rePassword">
+    </mat-form-field>
+  </div>
+  <button class="save-button" mat-raised-button (click)="saveProfile()">Save</button>
+</app-page-container>

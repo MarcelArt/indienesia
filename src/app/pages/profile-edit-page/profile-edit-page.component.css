@@ -1,0 +1,35 @@
+.password-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.password-input {
+  margin-right: 15px;
+}
+
+.save-button {
+  background-color: #CE1212;
+  border-color: #CE1212;
+}
+
+.l-avatar {
+  border-radius: 60px;
+  width: 120px;
+  height: 120px;
+  margin: 10px;
+}
+
+.m-avatar {
+  border-radius: 45px;
+  width: 90px;
+  height: 90px;
+  margin: 10px;
+}
+
+.s-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 10px;
+}

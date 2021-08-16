@@ -31,6 +31,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { PageContainerComponent } from './components/page-container/page-container.component';
 import { DashboardProjectComponent } from './components/dashboard-project/dashboard-project.component';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
+import { ProfileEditPageComponent } from './pages/profile-edit-page/profile-edit-page.component';
 // import { CommentBoxComponent } from './components/components/comment-box/comment-box.component';
 
 @NgModule({
@@ -48,6 +49,7 @@ import { StatsPageComponent } from './pages/stats-page/stats-page.component';
     PageContainerComponent,
     DashboardProjectComponent,
     StatsPageComponent,
+    ProfileEditPageComponent,
     // CommentBoxComponent
   ],
   imports: [
