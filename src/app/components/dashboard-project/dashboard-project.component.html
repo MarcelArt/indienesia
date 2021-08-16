@@ -4,7 +4,7 @@
     <h2>{{ title }}</h2>
     <div class="actions">
       <button mat-stroked-button>Edit</button>
-      <button mat-stroked-button>Stats</button>
+      <button mat-stroked-button [routerLink]="['/stats/', project_id]">Stats</button>
     </div>
   </div>
 </div>

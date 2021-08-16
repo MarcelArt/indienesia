@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -29,6 +30,7 @@ import { CommentBoxComponent } from './components/comment-box/comment-box.compon
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { PageContainerComponent } from './components/page-container/page-container.component';
 import { DashboardProjectComponent } from './components/dashboard-project/dashboard-project.component';
+import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 // import { CommentBoxComponent } from './components/components/comment-box/comment-box.component';
 
 @NgModule({
@@ -45,6 +47,7 @@ import { DashboardProjectComponent } from './components/dashboard-project/dashbo
     DashboardPageComponent,
     PageContainerComponent,
     DashboardProjectComponent,
+    StatsPageComponent,
     // CommentBoxComponent
   ],
   imports: [
@@ -62,7 +65,8 @@ import { DashboardProjectComponent } from './components/dashboard-project/dashbo
     MatGridListModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

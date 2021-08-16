@@ -41,6 +41,8 @@ export class AppComponent {
     // this.service.updateUser(null);
   }
 
+  
+
   updateHeader(): void {
     
   }

@@ -8,6 +8,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardPageComponent
+  },
+  {
+    path: 'stats/:id',
+    component: StatsPageComponent
   }
 ];
 

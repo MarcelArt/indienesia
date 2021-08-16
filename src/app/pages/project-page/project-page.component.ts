@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as CanvasJS from '../../utils/canvasjs/canvasjs.min.js';
+
 
 @Component({
   selector: 'app-project-page',
@@ -32,39 +32,20 @@ export class ProjectPageComponent implements OnInit {
           })
       })
     this.getComments();
-
-    let chart = new CanvasJS.Chart("chartContainer", {
-      animationEnabled: true,
-      theme: "light2",
-      title:{
-        text: "Simple Line Chart"
-      },
-      data: [{        
-        type: "line",
-            indexLabelFontSize: 16,
-        dataPoints: [
-          { y: 450 },
-          { y: 414},
-          { y: 520, indexLabel: "\u2191 highest",markerColor: "red", markerType: "triangle" },
-          { y: 460 },
-          { y: 450 },
-          { y: 500 },
-          { y: 480 },
-          { y: 480 },
-          { y: 410 , indexLabel: "\u2193 lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
-          { y: 500 },
-          { y: 480 },
-          { y: 510 }
-        ]
-      }]
-    });
-    chart.render();
-    
+    this.addViewCount(project_id);
   }
 
   downloadProject(): void {
     let project_id = this.route.snapshot.params.id;
     window.open(`http://localhost:3000/projects/${project_id}/download`);
+
+    fetch(`http://localhost:3000/stats/download`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ project_id })
+    })
 
     // fetch(`http://localhost:3000/projects/${project_id}/download`, {
     //   method: 'GET',
@@ -105,6 +86,16 @@ export class ProjectPageComponent implements OnInit {
       console.log(data);
       this.comments.push({ ...reqBody, name: JSON.parse(localStorage.getItem('loggedUser')).name });
       this.myComment = '';
+    })
+  }
+
+  addViewCount(project_id: string): void {
+    fetch(`http://localhost:3000/stats/view`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ project_id })
     })
   }
 }
