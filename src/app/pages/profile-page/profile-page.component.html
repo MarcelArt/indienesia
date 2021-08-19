@@ -1,13 +1,13 @@
 <div class="my-container">
   <div class="my-content">
     <div class="profile-info">
-      <img src="https://picsum.photos/200/200" alt="" class="my-avatar">
+      <img src="http://localhost:3000/accounts/avatar/{{ avatar }}" alt="" class="my-avatar">
       <div style="margin-left: 15px;">
         <h1>{{ targetUser.name }}</h1>
         <p>{{ followerCount }} followers</p>
         <button *ngIf="loggedName !== targetUser.name && !followed" mat-raised-button (click)="follow()">Follow</button>
         <button *ngIf="loggedName !== targetUser.name && followed" mat-raised-button (click)="unfollow()">Unfollow</button>
-        <button *ngIf="loggedName === targetUser.name" mat-raised-button>Edit profile</button>
+        <button *ngIf="loggedName === targetUser.name" mat-raised-button [routerLink]="['/settings/profile']">Edit profile</button>
       </div>
     </div>
     <p></p>

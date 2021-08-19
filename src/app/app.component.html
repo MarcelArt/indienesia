@@ -16,7 +16,7 @@
     <button [routerLink]="['/register']" mat-stroked-button class="toolbar-button signup-button">Signup</button>
   </div>
   <ng-template #userProfile>
-    <img class="my-avatar" src="https://picsum.photos/50/50">
+    <img class="my-avatar" src="http://localhost:3000/accounts/avatar/{{ loggedUser.account_id }}">
     <a [routerLink]="['/profile']">{{ loggedName }}</a>
     <button mat-icon-button [matMenuTriggerFor]="userOptions">
       <mat-icon>expand_more</mat-icon>

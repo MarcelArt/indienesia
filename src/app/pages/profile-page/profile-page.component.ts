@@ -13,6 +13,7 @@ export class ProfilePageComponent implements OnInit {
   followed: boolean;
   currentId: string;
   followerCount: number;
+  avatar: string;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -21,9 +22,11 @@ export class ProfilePageComponent implements OnInit {
     this.loggedName = this.targetUser.name;
     this.currentId = this.targetUser.account_id;
     
+    
     let account_id = this.targetUser.account_id;
     if(this.route.snapshot.params.id) {
       account_id = this.route.snapshot.params.id;
+      this.avatar = account_id;
       fetch(`http://localhost:3000/accounts/${account_id}`, {
         method: 'GET',
         headers: {
@@ -39,6 +42,7 @@ export class ProfilePageComponent implements OnInit {
 
     }
     else {
+      this.avatar = this.targetUser.account_id;
     }
     this.getFollowingStatus();
 

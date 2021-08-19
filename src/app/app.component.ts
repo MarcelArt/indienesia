@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CurrentUserService } from './services/current-user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AppComponent {
   loggedName: string = 'test';
   // testName: string = 'marcel';
 
-  constructor(private service: CurrentUserService) {
+  constructor(private service: CurrentUserService, private router: Router) {
 
   }
 
@@ -37,7 +38,7 @@ export class AppComponent {
   logout(): void {
     this.loggedUser = null;
     localStorage.setItem('loggedUser', null);
-
+    this.router.navigateByUrl('/');
     // this.service.updateUser(null);
   }
 
