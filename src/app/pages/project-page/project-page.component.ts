@@ -13,6 +13,8 @@ export class ProjectPageComponent implements OnInit {
   projectUser: string;
   comments: Array<object>;
   myComment: string;
+  likeCount: number;
+  likedThis: boolean;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -33,6 +35,7 @@ export class ProjectPageComponent implements OnInit {
       })
     this.getComments();
     this.addViewCount(project_id);
+    this.getLikes();
   }
 
   downloadProject(): void {
@@ -69,6 +72,25 @@ export class ProjectPageComponent implements OnInit {
       })
   }
 
+  getLikes(): void {
+    let project_id = this.route.snapshot.params.id;
+    let { account_id } = JSON.parse(localStorage.getItem('loggedUser'));
+
+    fetch(`http://localhost:3000/likes/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ project_id, account_id })
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        this.likeCount = data.like_count;
+        this.likedThis = data.liked;
+      })
+  }
+
   postComment(): void {
     const account_id = JSON.parse(localStorage.getItem('loggedUser')).account_id;
     const project_id = this.route.snapshot.params.id;
@@ -98,4 +120,42 @@ export class ProjectPageComponent implements OnInit {
       body: JSON.stringify({ project_id })
     })
   }
+
+  like(): void {
+    let project_id = this.route.snapshot.params.id;
+    let { account_id } = JSON.parse(localStorage.getItem('loggedUser'));
+
+    fetch('http://localhost:3000/like', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ project_id, account_id })
+    })
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data);
+        this.likeCount++;
+        this.likedThis = true;
+      })
+  }
+
+  unlike(): void {
+    let { account_id } = JSON.parse(localStorage.getItem('loggedUser'));
+
+    fetch('http://localhost:3000/unlike', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ account_id })
+    })
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data);
+        this.likeCount--;
+        this.likedThis = false;
+      })
+  }
 }
+

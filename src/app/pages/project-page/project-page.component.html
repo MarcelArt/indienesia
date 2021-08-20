@@ -6,7 +6,14 @@
         <div>
           <a class="my-link" [routerLink]="['/profile/', project.account_id]"><i>{{ project.name }}</i></a>
           <p>
-            <mat-icon style="display:inline-flex; vertical-align: middle;">thumb_up</mat-icon> 100 <mat-icon style="display:inline-flex; vertical-align: middle;">thumb_down</mat-icon> 70
+            <button *ngIf="!likedThis" mat-icon-button (click)="like()">
+              <mat-icon style="display:inline-flex; vertical-align: middle;">thumb_up</mat-icon> 
+            </button>
+            <button *ngIf="likedThis" mat-icon-button color="accent" (click)="unlike()">
+              <mat-icon style="display:inline-flex; vertical-align: middle;">thumb_up</mat-icon> 
+            </button>
+            {{ likeCount }} 
+            <!-- <mat-icon style="display:inline-flex; vertical-align: middle;">thumb_down</mat-icon> 70 -->
           </p>
         </div>
         <span class="spacer"></span>

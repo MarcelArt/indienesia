@@ -7,6 +7,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfileEditPageComponent } from './pages/profile-edit-page/profile-edit-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ProjectEditPageComponent } from './pages/project-edit-page/project-edit-page.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'app/:id',
     component: ProjectPageComponent
+  },
+  {
+    path: 'app/edit/:id',
+    component: ProjectEditPageComponent
   },
   {
     path: 'create',

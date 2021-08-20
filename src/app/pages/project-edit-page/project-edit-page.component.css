@@ -1,0 +1,69 @@
+.my-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.my-content {
+  display: flex;
+  flex-direction: row;
+  width: 930px;
+  height: 100%;
+  background-color: #EEEBDD;
+  padding: 35px;
+}
+
+.main-content {
+  flex: 2;
+  padding-right: 40px;
+  width: max-content;
+  /* background-color: aqua; */
+}
+
+.side-content {
+  flex: 1;
+  /* background-color: blue; */
+}
+
+.my-textbox {
+  width: 100%; 
+  border-style: solid; 
+  border-color: #707070; 
+  border-width: thin; 
+  background-color: #fff;
+}
+
+.my-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.my-link {
+  color: #FF3D3D;
+}
+
+.screenshot {
+  max-width: 300px;
+  max-height: 200px;
+  display: block;
+}
+
+.screenshot-container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.screenshot-container .btn {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
