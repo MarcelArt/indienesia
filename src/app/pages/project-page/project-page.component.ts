@@ -69,6 +69,7 @@ export class ProjectPageComponent implements OnInit {
       .then(res => res.json())
       .then(data => {
         this.comments = data;
+        console.log(`data`, data);
       })
   }
 

@@ -11,6 +11,9 @@ export class ProjectCardComponent implements OnInit {
   @Input() title: string;
   @Input() imgUrl: string;
   @Input() description: string;
+  @Input() like: number;
+  @Input() download: number;
+  @Input() view: number;
   thumbnail_id: string;
 
   constructor(private router: Router) { }
@@ -25,9 +28,16 @@ export class ProjectCardComponent implements OnInit {
           this.thumbnail_id = data.screenshots[0].screenshot_id;
         })
     })
+
+    this.description = this.truncateDesc();
   }
 
   goToProject(): void {
     this.router.navigateByUrl('/app');
+  }
+
+  truncateDesc(): string {
+    const maxLength = 25;
+    return this.description.length > maxLength ? `${ this.description.substring(0, maxLength) }...` : this.description; 
   }
 }

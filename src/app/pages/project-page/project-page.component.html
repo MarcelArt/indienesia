@@ -1,5 +1,6 @@
 <div class="my-container">
   <div class="my-content">
+    
     <div class="main-content">
       <h1>{{ project.title }}</h1>
       <div style="display: flex; flex-direction: row;">
@@ -29,7 +30,7 @@
       </mat-form-field>
       <button mat-raised-button (click)="postComment()">Comment</button>
       <p></p>
-      <app-comment-box *ngFor="let comment of comments"  [name]="comment.name" [body]="comment.body" [imgUrl]="'https://picsum.photos/30/30'"></app-comment-box>
+      <app-comment-box *ngFor="let comment of comments"  [name]="comment.name" [body]="comment.body" [imgUrl]="'http://localhost:3000/' + comment.avatar"></app-comment-box>
       <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     </div>
     <div class="side-content">

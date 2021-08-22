@@ -18,6 +18,10 @@ const routes: Routes = [
     component: HomePageComponent
   },
   {
+    path: 'search/:keyword',
+    component: HomePageComponent
+  },
+  {
     path: 'login',
     component: LoginPageComponent
   },

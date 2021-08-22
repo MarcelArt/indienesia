@@ -1,5 +1,30 @@
+<div class="sorter">
+  <div *ngIf="keyword">
+    <h1 style="color: #fff;">Search results for '{{ keyword }}'...</h1>
+  </div>
+  <div *ngIf="!keyword">
+    <h1 style="color: #fff;">Sort</h1>
+    <mat-form-field>
+      <mat-label>Sort</mat-label>
+      <mat-select [(ngModel)]="sort" (selectionChange)="switchSort($event)">
+        <mat-option value="Recent">Recent</mat-option>
+        <mat-option value="Likes">Likes</mat-option>
+        <mat-option value="Views">Views</mat-option>
+        <mat-option value="Downloads">Downloads</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</div>
 <mat-grid-list cols="4" rowHeight="300px">
   <mat-grid-tile *ngFor="let project of projects">
-    <app-project-card [title]="project.title" [description]="project.description" [project_id]="project.project_id"></app-project-card>
+    <app-project-card 
+      [title]="project.title" 
+      [description]="project.description" 
+      [project_id]="project.project_id"
+      [like]="project.like_count"
+      [view]="project.view_count"
+      [download]="project.download_count">
+    </app-project-card>
   </mat-grid-tile>
 </mat-grid-list>

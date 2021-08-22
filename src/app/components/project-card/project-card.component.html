@@ -8,4 +8,20 @@
     </a>
     <mat-card-subtitle>{{ description }}</mat-card-subtitle>
   </mat-card-content>
+  <mat-card-footer>
+    <div class="card-footer">
+      <div class="footer-item">
+        <mat-icon style="font-size: large;">thumb_up</mat-icon>
+        <p>{{ like || 0 }}</p>
+      </div>
+      <div class="footer-item">
+        <mat-icon style="font-size: large;">visibility</mat-icon>
+        <p>{{ view || 0 }}</p>
+      </div>
+      <div class="footer-item">
+        <mat-icon style="font-size: large;">download</mat-icon>
+        <p>{{ download || 0 }}</p>
+      </div>
+    </div>
+  </mat-card-footer>
 </mat-card>

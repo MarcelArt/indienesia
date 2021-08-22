@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CurrentUserService } from './services/current-user.service';
 
@@ -8,6 +8,7 @@ import { CurrentUserService } from './services/current-user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @Input() keyword;
   title = 'tugas-akhir';
   loggedUser: any = null;
   loggedName: string = 'test';
@@ -42,7 +43,11 @@ export class AppComponent {
     // this.service.updateUser(null);
   }
 
-  
+  search(): void {
+    // this.router.navigateByUrl(`/search/${ this.keyword }`);
+    location.href = `http://localhost:4200/search/${ this.keyword }`;
+    // window.open(`http://localhost:4200/search/${ this.keyword }`);
+  }
 
   updateHeader(): void {
     

@@ -5,12 +5,12 @@
   <span class="spacer"></span>
   <mat-form-field>
     <mat-label>Search</mat-label>
-    <input matInput placeholder="Search...">
-    <button mat-icon-button matSuffix>
+    <input matInput placeholder="Search..." [(ngModel)]="keyword">
+    <button mat-icon-button matSuffix (click)="search()">
       <mat-icon>search</mat-icon>
     </button>
   </mat-form-field>
-  <button mat-stroked-button class="toolbar-button">Browse</button>
+  <button mat-stroked-button class="toolbar-button" [routerLink]="['/']">Browse</button>
   <div *ngIf="loggedUser === null; else userProfile">
     <button [routerLink]="['/login']" mat-stroked-button class="toolbar-button">Login</button>
     <button [routerLink]="['/register']" mat-stroked-button class="toolbar-button signup-button">Signup</button>

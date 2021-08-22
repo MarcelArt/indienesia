@@ -19,6 +19,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
 
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -70,7 +71,8 @@ import { ProjectEditPageComponent } from './pages/project-edit-page/project-edit
     HttpClientModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

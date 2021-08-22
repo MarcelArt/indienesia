@@ -12,3 +12,16 @@
   /* display: block; */
   object-fit: cover;
 }
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  align-items: flex-start;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
