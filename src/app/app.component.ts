@@ -8,7 +8,7 @@ import { CurrentUserService } from './services/current-user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @Input() keyword;
+  @Input() keyword: string = '';
   title = 'tugas-akhir';
   loggedUser: any = null;
   loggedName: string = 'test';
