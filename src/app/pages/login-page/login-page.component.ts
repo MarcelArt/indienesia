@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {Router} from '@angular/router'
 import { CurrentUserService } from 'src/app/services/current-user.service';
 
@@ -12,10 +13,14 @@ export class LoginPageComponent implements OnInit {
   password = '';
   loggedUser: any = null;
 
-  constructor(private router: Router, private service: CurrentUserService) { }
+  constructor(private router: Router, private service: CurrentUserService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     // this.service.loggedUser$.subscribe(res => this.loggedUser = res);
+    this.loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+    if(this.loggedUser) {
+      this.router.navigateByUrl('/');
+    }
   }
 
   login(): void {
@@ -32,8 +37,15 @@ export class LoginPageComponent implements OnInit {
             if(data.success) {
               localStorage.setItem('loggedUser', JSON.stringify(data.data[0]));
               // this.service.updateUser(data.data[0]);
-
-              this.router.navigateByUrl('/profile');
+              // console.log(data.data[0]);
+              // console.log(location.href);
+              // this.router.navigateByUrl('/profile');
+              location.href = 'http://localhost:4200/profile';
+            }
+            else {
+              this._snackBar.open('Wrong email or password', 'OK', {
+                duration: 3000
+              });
             }
           });
       })

@@ -42,11 +42,11 @@ export class HomePageComponent implements OnInit {
           res.json()
             .then(data => {
               this.projects = data;
-              console.log(data);
+              this.switchSort(null);
             });
         });
     }
-
+    
   }
 
   switchSort(event): void {
@@ -68,7 +68,7 @@ export class HomePageComponent implements OnInit {
         break;
       case 'Recent': 
         this.projects.sort((a, b) => {
-          return a.project_id - b.project_id
+          return b.project_id - a.project_id
         });
         break;
     }
