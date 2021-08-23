@@ -7,10 +7,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./project-edit-page.component.css']
 })
 export class ProjectEditPageComponent implements OnInit {
-  @Input() title: string;
-  @Input() description: string;
-  @Input() visibility: string;
-  @Input() project_file: any = null;
+  title: string;
+  description: string;
+  visibility: string;
+  project_file: any = null;
+  image_file: any = null;
+  screenshots = [];
 
   project: any;
 
@@ -35,7 +37,7 @@ export class ProjectEditPageComponent implements OnInit {
         this.title = this.project.title;
         this.description = this.project.description;
         this.visibility = this.project.visibility;
-
+        this.screenshots = data.screenshots;
       })
   }
 
@@ -63,5 +65,45 @@ export class ProjectEditPageComponent implements OnInit {
     if(file) {
       this.project_file = file;
     }
+  }
+
+  onImageSelected(event): void {
+    const file: File = event.target.files[0];
+    if(file) {
+      this.image_file = file;
+      this.uploadImage();
+    }
+  }
+
+  deleteImage(screenshot_id: number): void {
+    fetch('http://localhost:3000/screenshot/delete', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ screenshot_id })
+    })
+      .then(res => res.json())
+      .then(data => {
+        let i = this.screenshots.findIndex((s => s.screenshot_id === screenshot_id));
+        this.screenshots.splice(i, 1);
+      });
+  }
+
+  uploadImage(): void {
+    const { id } = this.route.snapshot.params;
+    let body = new FormData();
+    body.append('project_id', id);
+    body.append('image_file', this.image_file);
+
+    fetch('http://localhost:3000/screenshot', {
+      method: 'POST',
+      body
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(`data`, data);
+        this.screenshots.push(data.new_screenshot);
+      });
   }
 }

@@ -31,6 +31,7 @@ export class ProjectPageComponent implements OnInit {
           .then(data => {
             this.project = data;
             this.screenshots = data.screenshots;
+            console.log(`this.screenshots`, this.screenshots);
           })
       })
     this.getComments();

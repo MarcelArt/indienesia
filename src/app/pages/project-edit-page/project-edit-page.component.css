@@ -52,11 +52,14 @@
 .screenshot {
   max-width: 300px;
   max-height: 200px;
-  display: block;
+  /* display: block; */
+  object-fit: contain;
 }
 
 .screenshot-container {
   position: relative;
+  height: fit-content;
+  width: fit-content;
   margin-bottom: 30px;
 }
 
