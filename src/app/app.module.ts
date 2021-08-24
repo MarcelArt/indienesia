@@ -20,6 +20,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -34,6 +35,7 @@ import { DashboardProjectComponent } from './components/dashboard-project/dashbo
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 import { ProfileEditPageComponent } from './pages/profile-edit-page/profile-edit-page.component';
 import { ProjectEditPageComponent } from './pages/project-edit-page/project-edit-page.component';
+import { DonationDialogComponent } from './components/donation-dialog/donation-dialog.component';
 // import { CommentBoxComponent } from './components/components/comment-box/comment-box.component';
 
 @NgModule({
@@ -53,6 +55,7 @@ import { ProjectEditPageComponent } from './pages/project-edit-page/project-edit
     StatsPageComponent,
     ProfileEditPageComponent,
     ProjectEditPageComponent,
+    DonationDialogComponent,
     // CommentBoxComponent
   ],
   imports: [
@@ -72,7 +75,8 @@ import { ProjectEditPageComponent } from './pages/project-edit-page/project-edit
     MatSnackBarModule,
     MatMenuModule,
     MatTabsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

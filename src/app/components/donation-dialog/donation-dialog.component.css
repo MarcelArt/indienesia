@@ -1,0 +1,10 @@
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+.donation-input {
+  text-align: right;
+}

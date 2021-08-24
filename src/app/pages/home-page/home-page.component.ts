@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
   projects = [];
-  sort: string = 'Recent';
+  sort: string = 'Likes';
   keyword: string;
 
   constructor(private route: ActivatedRoute) { }

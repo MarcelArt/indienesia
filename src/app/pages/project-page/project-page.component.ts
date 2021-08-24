@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { DonationDialogComponent } from 'src/app/components/donation-dialog/donation-dialog.component';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class ProjectPageComponent implements OnInit {
   likeCount: number;
   likedThis: boolean;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     let project_id = this.route.snapshot.params.id;
@@ -37,6 +39,13 @@ export class ProjectPageComponent implements OnInit {
     this.getComments();
     this.addViewCount(project_id);
     this.getLikes();
+  }
+
+  openDonation(): void {
+    const dialogRef = this.dialog.open(DonationDialogComponent, {
+      width: '300px',
+      data: this.project
+    });
   }
 
   downloadProject(): void {

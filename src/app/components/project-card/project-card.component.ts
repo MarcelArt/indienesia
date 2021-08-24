@@ -19,6 +19,7 @@ export class ProjectCardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.project_id);
     fetch(`http://localhost:3000/projects/${this.project_id}`, {
       method: 'GET',
     })

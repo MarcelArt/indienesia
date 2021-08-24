@@ -1,0 +1,15 @@
+<div class="dialog-container">
+  <h1 mat-dialog-title>Download {{ data.title }}</h1>
+  <div mat-dialog-content>
+    <p>Support the developer by donating</p>
+    <mat-form-field appearance="fill" floatLabel="always">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" class="donation-input" [(ngModel)]="amount">
+      <span matPrefix>Rp. &nbsp;</span>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="downloadProject()">Ok</button>
+    <button mat-button (click)="closeDialog()">No Thanks</button>
+  </div>
+</div>
