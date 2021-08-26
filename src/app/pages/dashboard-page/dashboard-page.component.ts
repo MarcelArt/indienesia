@@ -13,12 +13,14 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+    let reqBody =  { all: true };
 
     fetch(`http://localhost:3000/projects/user/${this.loggedUser.account_id}`, {
-      method: 'GET',
+      method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify(reqBody)
     })
       .then(res => res.json())
       .then(data => {

@@ -21,7 +21,7 @@ export class ProfilePageComponent implements OnInit {
     this.targetUser = JSON.parse(localStorage.getItem('loggedUser'));
     this.loggedName = this.targetUser.name;
     this.currentId = this.targetUser.account_id;
-    
+    let reqBody =  { all: false };
     
     let account_id = this.targetUser.account_id;
     if(this.route.snapshot.params.id) {
@@ -47,10 +47,11 @@ export class ProfilePageComponent implements OnInit {
     this.getFollowingStatus();
 
     fetch(`http://localhost:3000/projects/user/${account_id}`, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      }
+      },
+      body: JSON.stringify(reqBody)    
     })
       .then(res => {
         res.json()
