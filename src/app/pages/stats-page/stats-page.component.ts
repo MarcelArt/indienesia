@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import * as CanvasJS from '../../utils/canvasjs/canvasjs.min.js';
 
 @Component({
@@ -25,7 +26,7 @@ export class StatsPageComponent implements OnInit {
 
   getViewStats(): void {
     const project_id = this.route.snapshot.params.id;
-    fetch(`http://localhost:3000/stats/views/${project_id}`, {
+    fetch(`${environment.baseUrl}/stats/views/${project_id}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -44,7 +45,7 @@ export class StatsPageComponent implements OnInit {
 
   getDownloadStats(): void {
     const project_id = this.route.snapshot.params.id;
-    fetch(`http://localhost:3000/stats/downloads/${project_id}`, {
+    fetch(`${environment.baseUrl}/stats/downloads/${project_id}`, {
       method: 'GET',
     })
       .then(res => res.json())

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard-project',
@@ -14,7 +15,7 @@ export class DashboardProjectComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    fetch(`http://localhost:3000/projects/${this.project_id}`, {
+    fetch(`${environment.baseUrl}/projects/${this.project_id}`, {
       method: 'GET',
     })
     .then(res => {

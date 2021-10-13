@@ -1,6 +1,7 @@
 import { Xmb } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-create-project',
@@ -42,7 +43,7 @@ export class CreateProjectComponent implements OnInit {
     // oReq.open('POST', 'http://localhost:3000/projects/post');
     // oReq.send(body);
 
-    fetch('http://localhost:3000/projects/post', {
+    fetch(`${environment.baseUrl}/projects/post`, {
       method: 'POST',
       body
     })

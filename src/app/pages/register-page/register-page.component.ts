@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register-page',
@@ -12,7 +14,7 @@ export class RegisterPageComponent implements OnInit {
   rePassword = '';
   name = '';
 
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,7 +30,7 @@ export class RegisterPageComponent implements OnInit {
     }
     else {
       console.log({email: this.email, password: this.password, name: this.name});
-      fetch('http://localhost:3000/register', {
+      fetch(`${environment.baseUrl}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,6 +40,7 @@ export class RegisterPageComponent implements OnInit {
         .then(res => {
           console.log(res.json());
           this.snackBar.open('Account succesfully created', 'OK');
+          this.router.navigateByUrl('/');
         })
         .catch(err => console.error(err));
     }

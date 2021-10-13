@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-project-edit-page',
@@ -24,7 +25,7 @@ export class ProjectEditPageComponent implements OnInit {
 
   getProject(): void {
     const { id } = this.route.snapshot.params;
-    fetch(`http://localhost:3000/projects/${ id }`, {
+    fetch(`${environment.baseUrl}/projects/${ id }`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +51,7 @@ export class ProjectEditPageComponent implements OnInit {
     if(this.project_file) {
       body.append('project_file', this.project_file);
     }
-    fetch('http://localhost:3000/projects/edit', {
+    fetch(`${environment.baseUrl}/projects/edit`, {
       method: 'POST',
       body
     })
@@ -76,7 +77,7 @@ export class ProjectEditPageComponent implements OnInit {
   }
 
   deleteImage(screenshot_id: number): void {
-    fetch('http://localhost:3000/screenshot/delete', {
+    fetch(`${environment.baseUrl}/screenshot/delete`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -96,7 +97,7 @@ export class ProjectEditPageComponent implements OnInit {
     body.append('project_id', id);
     body.append('image_file', this.image_file);
 
-    fetch('http://localhost:3000/screenshot', {
+    fetch(`${environment.baseUrl}/screenshot`, {
       method: 'POST',
       body
     })

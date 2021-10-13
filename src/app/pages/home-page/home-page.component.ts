@@ -1,5 +1,6 @@
 import { Component, OnInit, ɵɵNgOnChangesFeature } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home-page',
@@ -17,7 +18,7 @@ export class HomePageComponent implements OnInit {
     this.keyword = this.route.snapshot.params.keyword || '';
 
     if(this.keyword) {
-      fetch(`http://localhost:3000/projects/search/${ this.keyword }`, {
+      fetch(`${environment.baseUrl}/projects/search/${ this.keyword }`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +33,7 @@ export class HomePageComponent implements OnInit {
       });
     }
     else {
-      fetch(`http://localhost:3000/projects/all`, {
+      fetch(`${environment.baseUrl}/projects/all`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

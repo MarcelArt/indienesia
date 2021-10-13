@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -15,7 +16,7 @@ export class DashboardPageComponent implements OnInit {
     this.loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
     let reqBody =  { all: true };
 
-    fetch(`http://localhost:3000/projects/user/${this.loggedUser.account_id}`, {
+    fetch(`${environment.baseUrl}/projects/user/${this.loggedUser.account_id}`, {
       method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -30,11 +30,11 @@
       </mat-form-field>
       <button mat-raised-button (click)="postComment()">Comment</button>
       <p></p>
-      <app-comment-box *ngFor="let comment of comments"  [name]="comment.name" [body]="comment.body" [imgUrl]="'http://localhost:3000/' + comment.avatar"></app-comment-box>
+      <app-comment-box *ngFor="let comment of comments"  [name]="comment.name" [body]="comment.body" [imgUrl]="'http://api.dukung-in.com/' + comment.avatar"></app-comment-box>
       
     </div>
     <div class="side-content">
-      <img class="screenshot" *ngFor="let screenshot of screenshots" src="http://localhost:3000/screenshot/{{ screenshot.screenshot_id }}" alt="">
+      <img class="screenshot" *ngFor="let screenshot of screenshots" src="http://api.dukung-in.com/{{ screenshot.screenshot_id }}" alt="">
       <!-- <img src="https://picsum.photos/300/200" alt="">
       <img src="https://picsum.photos/300/200?grayscale" alt="">
       <img src="https://picsum.photos/300/200?blur=2" alt=""> -->

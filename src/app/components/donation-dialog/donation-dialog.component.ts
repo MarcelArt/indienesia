@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-donation-dialog',
@@ -16,9 +17,9 @@ export class DonationDialogComponent implements OnInit {
 
   downloadProject(): void {
     let { project_id } = this.data;
-    window.open(`http://localhost:3000/projects/${project_id}/download`);
+    window.open(`${environment.baseUrl}/projects/${project_id}/download`);
 
-    fetch(`http://localhost:3000/stats/download`, {
+    fetch(`${environment.baseUrl}/stats/download`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +40,7 @@ export class DonationDialogComponent implements OnInit {
   donate(): void {
     const { project_id } = this.data;
     
-    fetch('http://localhost:3000/donate', {
+    fetch(`${environment.baseUrl}/donate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

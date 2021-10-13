@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-project-card',
@@ -20,7 +21,7 @@ export class ProjectCardComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.project_id);
-    fetch(`http://localhost:3000/projects/${this.project_id}`, {
+    fetch(`${environment.baseUrl}/projects/${this.project_id}`, {
       method: 'GET',
     })
     .then(res => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile-page',
@@ -27,7 +28,7 @@ export class ProfilePageComponent implements OnInit {
     if(this.route.snapshot.params.id) {
       account_id = this.route.snapshot.params.id;
       this.avatar = account_id;
-      fetch(`http://localhost:3000/accounts/${account_id}`, {
+      fetch(`${environment.baseUrl}/accounts/${account_id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -46,7 +47,7 @@ export class ProfilePageComponent implements OnInit {
     }
     this.getFollowingStatus();
 
-    fetch(`http://localhost:3000/projects/user/${account_id}`, {
+    fetch(`${environment.baseUrl}/projects/user/${account_id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -77,7 +78,7 @@ export class ProfilePageComponent implements OnInit {
 
   getFollowingStatus(): void {
     let following_id = this.route.snapshot.params.id || this.currentId;
-    fetch(`http://localhost:3000/follow/status`, {
+    fetch(`${environment.baseUrl}/follow/status`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -91,7 +92,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   follow(): void {
-    fetch('http://localhost:3000/follow', {
+    fetch(`${environment.baseUrl}/follow`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -106,7 +107,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   unfollow(): void {
-    fetch('http://localhost:3000/unfollow', {
+    fetch(`${environment.baseUrl}/unfollow`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -121,7 +122,7 @@ export class ProfilePageComponent implements OnInit {
 
   getFollowerCount(): void {
     let following_id = this.route.snapshot.params.id || this.currentId;
-    fetch(`http://localhost:3000/follow/count/${following_id}`, {
+    fetch(`${environment.baseUrl}/follow/count/${following_id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

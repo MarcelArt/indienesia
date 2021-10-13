@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Router} from '@angular/router'
 import { CurrentUserService } from 'src/app/services/current-user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-page',
@@ -24,7 +25,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   login(): void {
-    fetch('http://localhost:3000/login', {
+    fetch(`${environment.baseUrl}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +41,7 @@ export class LoginPageComponent implements OnInit {
               // console.log(data.data[0]);
               // console.log(location.href);
               // this.router.navigateByUrl('/profile');
-              location.href = 'http://localhost:4200/profile';
+              location.href = `${environment.homeUrl}/profile`;
             }
             else {
               this._snackBar.open('Wrong email or password', 'OK', {

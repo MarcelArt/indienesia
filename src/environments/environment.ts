@@ -1,9 +1,13 @@
+// import * as Dotenv from 'dotenv';
+// Dotenv.config();
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'http://api.dukung-in.com',
+  homeUrl: 'http://localhost:4200'
 };
 
 /*

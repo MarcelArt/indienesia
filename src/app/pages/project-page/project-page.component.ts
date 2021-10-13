@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { DonationDialogComponent } from 'src/app/components/donation-dialog/donation-dialog.component';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ProjectPageComponent implements OnInit {
 
   ngOnInit(): void {
     let project_id = this.route.snapshot.params.id;
-    fetch(`http://localhost:3000/projects/${project_id}`, {
+    fetch(`${environment.baseUrl}/projects/${project_id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -50,9 +51,9 @@ export class ProjectPageComponent implements OnInit {
 
   downloadProject(): void {
     let project_id = this.route.snapshot.params.id;
-    window.open(`http://localhost:3000/projects/${project_id}/download`);
+    window.open(`${environment.baseUrl}/projects/${project_id}/download`);
 
-    fetch(`http://localhost:3000/stats/download`, {
+    fetch(`${environment.baseUrl}/stats/download`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -70,7 +71,7 @@ export class ProjectPageComponent implements OnInit {
 
   getComments(): void {
     let project_id = this.route.snapshot.params.id;
-    fetch(`http://localhost:3000/comments/${project_id}`, {
+    fetch(`${environment.baseUrl}/comments/${project_id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -87,7 +88,7 @@ export class ProjectPageComponent implements OnInit {
     let project_id = this.route.snapshot.params.id;
     let { account_id } = JSON.parse(localStorage.getItem('loggedUser'));
 
-    fetch(`http://localhost:3000/likes/`, {
+    fetch(`${environment.baseUrl}/likes/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -107,7 +108,7 @@ export class ProjectPageComponent implements OnInit {
     const project_id = this.route.snapshot.params.id;
     const reqBody = { account_id, project_id, body: this.myComment };
     
-    fetch('http://localhost:3000/comment', {
+    fetch(`${environment.baseUrl}/comment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -123,7 +124,7 @@ export class ProjectPageComponent implements OnInit {
   }
 
   addViewCount(project_id: string): void {
-    fetch(`http://localhost:3000/stats/view`, {
+    fetch(`${environment.baseUrl}/stats/view`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -136,7 +137,7 @@ export class ProjectPageComponent implements OnInit {
     let project_id = this.route.snapshot.params.id;
     let { account_id } = JSON.parse(localStorage.getItem('loggedUser'));
 
-    fetch('http://localhost:3000/like', {
+    fetch(`${environment.baseUrl}/like`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -154,7 +155,7 @@ export class ProjectPageComponent implements OnInit {
   unlike(): void {
     let { account_id } = JSON.parse(localStorage.getItem('loggedUser'));
 
-    fetch('http://localhost:3000/unlike', {
+    fetch(`${environment.baseUrl}/unlike`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

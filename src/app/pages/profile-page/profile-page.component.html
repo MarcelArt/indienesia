@@ -1,7 +1,7 @@
 <div class="my-container">
   <div class="my-content">
     <div class="profile-info">
-      <img src="http://localhost:3000/accounts/avatar/{{ avatar }}" alt="" class="my-avatar">
+      <img src="http://api.dukung-in.com/accounts/avatar/{{ avatar }}" alt="" class="my-avatar">
       <div style="margin-left: 15px;">
         <h1>{{ targetUser.name }}</h1>
         <p>{{ followerCount }} followers</p>
@@ -14,7 +14,7 @@
     <h2>{{ targetUser.name }}'s Projects</h2>
     <div class="separator-line"></div>
     <p></p>
-    <mat-grid-list cols="3" rowHeight="300px">
+    <mat-grid-list cols="3" rowHeight="350px">
       <mat-grid-tile *ngFor="let project of projects">
         <app-project-card 
           title="{{ project.title }}" 

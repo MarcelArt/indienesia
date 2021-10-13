@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile-edit-page',
@@ -48,7 +49,7 @@ export class ProfileEditPageComponent implements OnInit {
     console.log(`body`, body);
 
     
-    fetch('http://localhost:3000/accounts', {
+    fetch(`${environment.baseUrl}/accounts`, {
       method: 'POST',
       body
       // body: JSON.stringify(reqBody)
@@ -63,7 +64,7 @@ export class ProfileEditPageComponent implements OnInit {
   }
 
   getPassword(): void {
-    fetch('http://localhost:3000/accounts/getPassword', {
+    fetch(`${environment.baseUrl}/accounts/getPassword`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -86,7 +87,7 @@ export class ProfileEditPageComponent implements OnInit {
     }
     else {
       let reqBody = { account_id: this.loggedUser.account_id, new_password: this.newPassword };
-      fetch('http://localhost:3000/accounts/changePassword', {
+      fetch(`${environment.baseUrl}/accounts/changePassword`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

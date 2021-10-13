@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { CurrentUserService } from './services/current-user.service';
 
 @Component({
@@ -45,7 +46,7 @@ export class AppComponent {
 
   search(): void {
     // this.router.navigateByUrl(`/search/${ this.keyword }`);
-    location.href = `http://localhost:4200/search/${ this.keyword }`;
+    location.href = `${environment.homeUrl}/search/${ this.keyword }`;
     // window.open(`http://localhost:4200/search/${ this.keyword }`);
   }
 
