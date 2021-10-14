@@ -6,8 +6,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://api.dukung-in.com',
-  homeUrl: 'http://localhost:4200'
+  baseUrl: '//api.dukung-in.com',
+  homeUrl: 'https://dukung-in.web.app'
 };
 
 /*

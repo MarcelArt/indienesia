@@ -29,7 +29,7 @@
     <div class="side-content">
       <input type="file" (change)="onImageSelected($event)">
       <div *ngFor="let screenshot of screenshots" class="screenshot-container">
-        <img class="screenshot" src="http://api.dukung-in.com/{{ screenshot.image_file }}" alt="">
+        <img class="screenshot" src="//api.dukung-in.com/{{ screenshot.image_file }}" alt="">
         <button class="btn" mat-mini-fab color="warn" (click)="deleteImage(screenshot.screenshot_id)">
           <mat-icon>delete</mat-icon>
         </button>
