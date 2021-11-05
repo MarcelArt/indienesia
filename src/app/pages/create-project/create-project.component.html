@@ -16,7 +16,13 @@
       <p><b>Files</b></p>
       <input type="file" [(ngModel)]="project_file" (change)="onFileSelected($event)">
       <!-- <button mat-raised-button>Upload files</button> -->
-      <br><br>  
+      <br><br>
+      <div *ngIf="isMobile">
+        <p><b>Images</b></p>
+        <input type="file" (change)="onImageSelected($event)">
+        <img *ngFor="let screenshot of screenshots" class="screenshot" src="{{screenshot}}" alt="">
+        <br><br>
+      </div>
       <p><b>Visibility</b></p>
       <mat-radio-group class="my-radio-group" [(ngModel)]="visibility">
         <mat-radio-button value="Draft">Draft</mat-radio-button>
@@ -26,9 +32,12 @@
       <br><br>
       <button mat-raised-button (click)="postProject()">Save and view</button>
     </div>
-    <div class="side-content">
-      <input type="file" (change)="onImageSelected($event)">
-      <img *ngFor="let screenshot of screenshots" class="screenshot" src="{{screenshot}}" alt="">
+    <div *ngIf="!isMobile">
+      <div class="side-content">
+        <p><b>Images</b></p>
+        <input type="file" (change)="onImageSelected($event)">
+        <img *ngFor="let screenshot of screenshots" class="screenshot" src="{{screenshot}}" alt="">
+      </div>
     </div>
   </div>
 </div>

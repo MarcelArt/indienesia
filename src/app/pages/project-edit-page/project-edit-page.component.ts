@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -14,10 +15,13 @@ export class ProjectEditPageComponent implements OnInit {
   project_file: any = null;
   image_file: any = null;
   screenshots = [];
+  isMobile: boolean = false;
 
   project: any;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private deviceService: DeviceDetectorService) { 
+    this.isMobile = deviceService.isMobile();
+  }
 
   ngOnInit(): void {
     this.getProject();

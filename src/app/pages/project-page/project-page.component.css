@@ -9,7 +9,7 @@
 .my-content {
   display: flex;
   flex-direction: row;
-  width: 930px;
+  width: 70%;
   height: 100%;
   background-color: #EEEBDD;
   padding: 35px;
@@ -38,4 +38,9 @@
   max-width: 300px;
   max-height: 200px;
   display: block;
+}
+
+.project-stats {
+  display: flex;
+  flex-direction: row;
 }

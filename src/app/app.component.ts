@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { environment } from 'src/environments/environment';
 import { CurrentUserService } from './services/current-user.service';
 
@@ -13,10 +14,11 @@ export class AppComponent {
   title = 'tugas-akhir';
   loggedUser: any = null;
   loggedName: string = 'test';
+  isMobile: boolean = false;
   // testName: string = 'marcel';
 
-  constructor(private service: CurrentUserService, private router: Router) {
-
+  constructor(private service: CurrentUserService, private router: Router, deviceService: DeviceDetectorService) {
+    this.isMobile = deviceService.isMobile();
   }
 
   ngOnInit(): void {

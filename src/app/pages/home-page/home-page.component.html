@@ -16,7 +16,7 @@
   </div>
 
 </div>
-<mat-grid-list cols="4" rowHeight="350px">
+<mat-grid-list cols="{{ isMobile ? 1 : 4 }}" rowHeight="350px">
   <mat-grid-tile *ngFor="let project of projects">
     <app-project-card 
       [title]="project.title" 

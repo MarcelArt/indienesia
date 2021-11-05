@@ -1,6 +1,7 @@
 import { Xmb } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector'
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,8 +17,11 @@ export class CreateProjectComponent implements OnInit {
   screenshots = [];
   projectFiles = [];
   selectedImage: any;
+  isMobile: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private deviceService: DeviceDetectorService) {
+    this.isMobile = deviceService.isMobile();
+   }
 
   ngOnInit(): void {
   }

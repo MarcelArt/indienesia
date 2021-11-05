@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { DonationDialogComponent } from 'src/app/components/donation-dialog/donation-dialog.component';
 import { environment } from 'src/environments/environment';
 
@@ -17,9 +18,15 @@ export class ProjectPageComponent implements OnInit {
   comments: Array<object>;
   myComment: string;
   likeCount: number;
+  dislikeCount: number;
+  viewCount: number;
   likedThis: boolean;
+  dislikedThis: boolean;
+  isMobile: boolean = false;
 
-  constructor(private route: ActivatedRoute, public dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, public dialog: MatDialog, private deviceService: DeviceDetectorService) {
+    this.isMobile = deviceService.isMobile();
+  }
 
   ngOnInit(): void {
     let project_id = this.route.snapshot.params.id;
@@ -40,6 +47,8 @@ export class ProjectPageComponent implements OnInit {
     this.getComments();
     this.addViewCount(project_id);
     this.getLikes();
+    this.getViews();
+    this.getDislikes();
   }
 
   openDonation(): void {
@@ -103,6 +112,40 @@ export class ProjectPageComponent implements OnInit {
       })
   }
 
+  getDislikes(): void {
+    let project_id = this.route.snapshot.params.id;
+    let { account_id } = JSON.parse(localStorage.getItem('loggedUser'));
+
+    fetch(`${environment.baseUrl}/dislikes/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ project_id, account_id })
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('dislikes', data);
+        this.dislikeCount = data.dislike_count;
+        this.dislikedThis = data.disliked;
+      })
+  }
+
+  getViews(): void {
+    let project_id = this.route.snapshot.params.id;
+
+    fetch(`${environment.baseUrl}/views/${ project_id }`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.viewCount = data.view_count;
+      })
+  }
+
   postComment(): void {
     const account_id = JSON.parse(localStorage.getItem('loggedUser')).account_id;
     const project_id = this.route.snapshot.params.id;
@@ -150,6 +193,32 @@ export class ProjectPageComponent implements OnInit {
         this.likeCount++;
         this.likedThis = true;
       })
+
+    if(this.dislikedThis) {
+      this.undislike();
+    }
+  }
+
+  dislike(): void {
+    let project_id = this.route.snapshot.params.id;
+    let { account_id } = JSON.parse(localStorage.getItem('loggedUser'));
+
+    fetch(`${environment.baseUrl}/dislike`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ project_id, account_id })
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.dislikeCount++;
+        this.dislikedThis = true;
+      })
+
+    if(this.likedThis) {
+      this.unlike();
+    }
   }
 
   unlike(): void {
@@ -167,6 +236,24 @@ export class ProjectPageComponent implements OnInit {
         // console.log(data);
         this.likeCount--;
         this.likedThis = false;
+      })
+  }
+
+  undislike(): void {
+    let { account_id } = JSON.parse(localStorage.getItem('loggedUser'));
+
+    fetch(`${environment.baseUrl}/undislike`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ account_id })
+    })
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data);
+        this.dislikeCount--;
+        this.dislikedThis = false;
       })
   }
 }

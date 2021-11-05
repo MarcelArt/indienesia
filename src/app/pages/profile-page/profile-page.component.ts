@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -15,8 +16,11 @@ export class ProfilePageComponent implements OnInit {
   currentId: string;
   followerCount: number;
   avatar: string;
+  isMobile: boolean = false;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private deviceService: DeviceDetectorService) { 
+    this.isMobile = deviceService.isMobile();
+  }
 
   ngOnInit(): void {
     this.targetUser = JSON.parse(localStorage.getItem('loggedUser'));

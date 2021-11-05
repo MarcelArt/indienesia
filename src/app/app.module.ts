@@ -36,6 +36,8 @@ import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 import { ProfileEditPageComponent } from './pages/profile-edit-page/profile-edit-page.component';
 import { ProjectEditPageComponent } from './pages/project-edit-page/project-edit-page.component';
 import { DonationDialogComponent } from './components/donation-dialog/donation-dialog.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 // import { CommentBoxComponent } from './components/components/comment-box/comment-box.component';
 
 @NgModule({
@@ -76,7 +78,13 @@ import { DonationDialogComponent } from './components/donation-dialog/donation-d
     MatMenuModule,
     MatTabsModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

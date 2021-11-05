@@ -1,7 +1,7 @@
 <div class="my-container">
   <div class="my-content">
     <div class="main-content">
-      <h1>Create new project</h1>
+      <h1>Edit project</h1>
       <mat-label style="color: #000;"><b>Title</b></mat-label>
       <mat-form-field class="my-textbox" appearance="fill">
         <input matInput placeholder="Title" [(ngModel)]="title">
@@ -17,6 +17,17 @@
       <input type="file" [(ngModel)]="project_file" (change)="onFileSelected($event)">
       <!-- <button mat-raised-button>Upload files</button> -->
       <br><br>  
+      <div *ngIf="isMobile">
+        <p><b>Images</b></p>
+        <input type="file" (change)="onImageSelected($event)">
+        <div *ngFor="let screenshot of screenshots" class="screenshot-container">
+          <img class="screenshot" src="//api.dukung-in.com/{{ screenshot.image_file }}" alt="">
+          <button class="btn" mat-mini-fab color="warn" (click)="deleteImage(screenshot.screenshot_id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <br><br>
+      </div>
       <p><b>Visibility</b></p>
       <mat-radio-group class="my-radio-group" [(ngModel)]="visibility">
         <mat-radio-button value="Draft">Draft</mat-radio-button>
@@ -26,7 +37,8 @@
       <br><br>
       <button mat-raised-button (click)="editAndSave()">Save and view</button>
     </div>
-    <div class="side-content">
+    <div *ngIf="!isMobile" class="side-content">
+      <p>Images</p>
       <input type="file" (change)="onImageSelected($event)">
       <div *ngFor="let screenshot of screenshots" class="screenshot-container">
         <img class="screenshot" src="//api.dukung-in.com/{{ screenshot.image_file }}" alt="">
@@ -34,12 +46,6 @@
           <mat-icon>delete</mat-icon>
         </button>
       </div>
-      <!-- <div class="screenshot-container">
-        <img class="screenshot" src="https://picsum.photos/300/200" alt="">
-        <button class="btn" mat-mini-fab color="warn">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div> -->
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, ɵɵNgOnChangesFeature } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -11,8 +12,11 @@ export class HomePageComponent implements OnInit {
   projects = [];
   sort: string = 'Likes';
   keyword: string;
+  isMobile: boolean = false;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
+    this.isMobile = deviceService.isMobile();
+  }
 
   ngOnInit(): void {
     this.keyword = this.route.snapshot.params.keyword || '';
